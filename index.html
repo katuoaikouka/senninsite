@@ -7,11 +7,12 @@
   <title>senninsite</title>
   <style>
     :root {
-      --primary-color: #2c3e50; /* 落ち着いた墨色 */
-      --accent-color: #27ae60;  /* 仙人をイメージした緑 */
-      --bg-color: #f4f4f2;      /* 和紙のような明るいグレー */
+      --primary-color: #1a1a1a; /* ダークな統一感 */
+      --accent-color: #27ae60;  /* 仙人カラーの緑 */
+      --bg-color: #f4f4f2;      /* 背景 */
       --card-bg: #ffffff;
       --text-main: #333;
+      --nav-text: #bbb;
     }
 
     body {
@@ -22,30 +23,41 @@
       line-height: 1.6;
     }
 
-    /* ヘッダー */
+    /* ヘッダー UIの統一 */
     header {
       background: var(--primary-color);
       color: white;
-      padding: 1.2rem 2rem;
+      padding: 0 10%;
+      height: 70px;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
     }
 
-    header h1 { margin: 0; font-size: 1.8rem; letter-spacing: 2px; }
-    header h1 a { color: white; text-decoration: none; }
+    header h1 { margin: 0; font-size: 1.6rem; letter-spacing: 2px; }
+    header h1 a { color: white; text-decoration: none; transition: color 0.3s; }
+    header h1 a:hover { color: var(--accent-color); }
 
+    nav { display: flex; gap: 15px; }
     nav a {
-      color: white;
+      color: var(--nav-text);
       text-decoration: none;
-      margin-left: 20px;
       font-weight: bold;
-      transition: color 0.3s;
+      font-size: 15px;
+      padding: 8px 15px;
+      border-radius: 20px;
+      transition: all 0.3s;
     }
-    nav a:hover { color: var(--accent-color); }
+    nav a:hover {
+      color: white;
+      background: rgba(255,255,255,0.1);
+    }
 
-    /* メイン */
+    /* メインエリア */
     main {
       max-width: 1000px;
       margin: 40px auto;
@@ -64,7 +76,7 @@
 
     .hero h2 { margin-top: 0; color: var(--primary-color); }
 
-    /* カードレイアウト */
+    /* カード UIの統一 */
     .posts {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -75,15 +87,33 @@
       background: var(--card-bg);
       padding: 24px;
       border-radius: 12px;
-      transition: all 0.3s ease;
-      border-bottom: 4px solid transparent;
+      transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+      border: 1px solid rgba(0,0,0,0.03);
       box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+      position: relative;
+      overflow: hidden;
+    }
+
+    article::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 5px;
+      height: 100%;
+      background: var(--accent-color);
+      opacity: 0;
+      transition: opacity 0.3s;
     }
 
     article:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 12px 20px rgba(0,0,0,0.1);
-      border-bottom: 4px solid var(--accent-color);
+      transform: translateY(-8px);
+      box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+      border-color: var(--accent-color);
+    }
+
+    article:hover::before {
+      opacity: 1;
     }
 
     article h3 {
@@ -108,7 +138,7 @@
       font-size: 0.85rem;
     }
 
-    /* お知らせモーダル（既存機能を統合） */
+    /* モーダル */
     #announcement-modal {
       display: flex; position: fixed; top: 0; left: 0; width: 100%; height: 100%; 
       background-color: rgba(0,0,0,0.6); justify-content: center; align-items: center; z-index: 9999;
@@ -131,7 +161,7 @@
       <p style="text-align: left; font-size: 14px;">
         仙人開発部門がおくる次世代ポータル「senninsite」がリリースされました。<br><br>
         これからもよろしく<br>
-        <a href="あ" style="color: var(--accent-color); font-weight: bold;">[homepageはこちら]</a>
+        <a href="/" style="color: var(--accent-color); font-weight: bold;">[homepageはこちら]</a>
       </p>
     </div>
   </div>
@@ -175,7 +205,7 @@
   </main>
 
   <footer>
-    <p>&copy; 2026 senninsit</p>
+    <p>&copy; 2026 senninsite</p>
   </footer>
 
 </body>
