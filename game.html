@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>senninsite | Games</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-bg: #f8f9fa;
+            --nav-bg: #1a1a1a;
+            --card-bg: #ffffff;
+            --accent-color: #00d4ff; 
+            --text-main: #333;
+            --text-sub: #666;
+        }
+
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            background-color: var(--primary-bg);
+            margin: 0;
+            padding: 0;
+            color: var(--text-main);
+        }
+
+        /* --- モダンナビゲーションバー --- */
+        header {
+            background-color: var(--nav-bg);
+            padding: 0 10%;
+            height: 70px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 24px;
+            letter-spacing: 1px;
+        }
+
+        header h1 a {
+            color: #fff;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        header h1 a:hover {
+            color: var(--accent-color);
+        }
+
+        nav {
+            display: flex;
+            gap: 20px;
+        }
+
+        nav a {
+            color: #bbb;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 15px;
+            padding: 8px 15px;
+            border-radius: 20px;
+            transition: all 0.3s;
+        }
+
+        nav a:hover {
+            color: #fff;
+            background: rgba(255,255,255,0.1);
+        }
+
+        /* --- メインコンテンツ --- */
+        .container {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        .page-title {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .page-title h2 {
+            font-size: 2rem;
+            position: relative;
+            display: inline-block;
+            padding-bottom: 10px;
+        }
+
+        .page-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 50px;
+            height: 3px;
+            background: var(--accent-color);
+        }
+
+        /* --- カードグリッド --- */
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            gap: 25px;
+        }
+
+        .card-link {
+            text-decoration: none;
+            color: inherit;
+            display: flex;
+        }
+
+        .card {
+            background: var(--card-bg);
+            border-radius: 15px;
+            padding: 25px;
+            width: 100%;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            border: 1px solid rgba(0,0,0,0.03);
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 5px;
+            height: 100%;
+            background: var(--accent-color);
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+            border-color: var(--accent-color);
+        }
+
+        .card:hover::before {
+            opacity: 1;
+        }
+
+        .card-title {
+            margin: 0 0 12px 0;
+            font-size: 1.25rem;
+            color: var(--nav-bg);
+            font-weight: 700;
+        }
+
+        .card-description {
+            margin: 0;
+            font-size: 0.9rem;
+            color: var(--text-sub);
+            line-height: 1.6;
+            flex-grow: 1;
+        }
+
+        /* --- レスポンシブ --- */
+        @media (max-width: 600px) {
+            header { padding: 0 5%; }
+            header h1 { font-size: 20px; }
+            nav { gap: 5px; }
+            nav a { font-size: 13px; padding: 5px 10px; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1><a href="/">senninsite</a></h1>
+        <nav>
+            <a href="/">Home</a>
+            <a href="/proxy">Proxy</a>
+            <a href="/game">Games</a>
+        </nav>
+    </header>
+
+    <div class="container">
+        <div class="page-title">
+            <h2>Game Library</h2>
+        </div>
+
+        <div class="card-grid">
+            <a href="/game/tag" class="card-link">
+                <div class="card">
+                    <h2 class="card-title">Tag</h2>
+                    <p class="card-description">時には大胆に走り抜け、鬼に捕まらないようスリル満点の鬼ごっこを繰り広げるステルスゲームです。</p>
+                </div>
+            </a>
+
+            <a href="/game/subwaysurfers" class="card-link">
+                <div class="card">
+                    <h2 class="card-title">Subwaysurfers</h2>
+                    <p class="card-description">警官と犬から逃げ、列車をかわし、ひたすら走り続ける中毒性たっぷりの無限ランゲームです。</p>
+                </div>
+            </a>
+
+            <a href="/game/pou" class="card-link">
+                <div class="card">
+                    <h2 class="card-title">Pou</h2>
+                    <p class="card-description">謎の宇宙生物「Pou」の世話をして、ごはんをあげたり育てるペット育成ゲームです。</p>
+                </div>
+            </a>
+
+            <a href="/game/geometrydash" class="card-link">
+                <div class="card">
+                    <h2 class="card-title">GeometryDash</h2>
+                    <p class="card-description">満を持しての登場！音楽に合わせ幾何学的な正方形を動かす、リズム＆アクションの名作。</p>
+                </div>
+            </a>
+
+            <a href="/game/eaglercraft-1.20.1" class="card-link">
+                <div class="card">
+                    <h2 class="card-title">Mine(Eagler)craft 1.20.1</h2>
+                    <p class="card-description">ブラウザで動くクラフトゲーム。1.20ベースの環境でサバイバルを楽しもう。</p>
+                </div>
+            </a>
+
+            <a href="/game/1v1-lol" class="card-link">
+                <div class="card">
+                    <h2 class="card-title">1v1 lol</h2>
+                    <p class="card-description">建築と射撃を駆使するバトル。1対1のタイマン勝負で実力を証明せよ。</p>
+                </div>
+            </a>
+
+            <a href="/game/about" class="card-link">
+                <div class="card">
+                    <h2 class="card-title">その他ゲーム</h2>
+                    <p class="card-description">プロキシ経由で遊べる隠しゲームたち。/proxyを活用してアクセスしてください。</p>
+                </div>
+            </a>
+        </div>
+    </div>
+
+    <footer style="text-align: center; padding: 40px; color: #999; font-size: 13px;">
+        &copy; 2026 senninsite
+    </footer>
+
+</body>
+</html>
