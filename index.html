@@ -83,7 +83,8 @@
       gap: 25px;
     }
 
-    article {
+    card {
+      display: block;
       background: var(--card-bg);
       padding: 24px;
       border-radius: 12px;
@@ -94,7 +95,7 @@
       overflow: hidden;
     }
 
-    article::before {
+    card::before {
       content: '';
       position: absolute;
       top: 0;
@@ -106,27 +107,27 @@
       transition: opacity 0.3s;
     }
 
-    article:hover {
+    card:hover {
       transform: translateY(-8px);
       box-shadow: 0 15px 30px rgba(0,0,0,0.1);
       border-color: var(--accent-color);
     }
 
-    article:hover::before {
+    card:hover::before {
       opacity: 1;
     }
 
-    article h3 {
+    card h3 {
       margin-top: 0;
       font-size: 1.3rem;
     }
 
-    article h3 a {
+    card h3 a {
       text-decoration: none;
       color: var(--primary-color);
     }
 
-    article p {
+    card p {
       font-size: 0.95rem;
       color: #666;
     }
@@ -182,25 +183,30 @@
     </section>
 
     <section class="posts">
-      <article>
+      <card>
         <h3><a href="/youtube">YouTube</a></h3>
         <p>しあtubeや仙人tubeなどを搭載しています。</p>
-      </article>
+      </card>
       
-      <article>
+      <card>
         <h3><a href="/proxy">ぷろきし</a></h3>
         <p>仙人proxyを搭載しています</p>
-      </article>
+      </card>
       
-      <article>
+      <card>
         <h3><a href="/game">🎮 ゲーム</a></h3>
         <p>ゲーム集だよ</p>
-      </article>
+      </card>
       
-      <article>
+      <card>
         <h3><a href="/blog">お知らせ</a></h3>
         <p>運営からのお知らせです　更新情報などを見れます。</p>
-      </article>
+      </card>
+
+       <card>
+        <h3><a href="/tool">ツールズ</a></h3>
+        <p>便利ツールがいっぱい</p>
+       </card>
     </section>
   </main>
 
