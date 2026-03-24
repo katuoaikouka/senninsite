@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="senninsite - 仙人の如く自由にウェブを歩む"/>
+  <title>senninsite</title>
+  <style>
+    :root {
+      --primary-color: #2c3e50; /* 落ち着いた墨色 */
+      --accent-color: #27ae60;  /* 仙人をイメージした緑 */
+      --bg-color: #f4f4f2;      /* 和紙のような明るいグレー */
+      --card-bg: #ffffff;
+      --text-main: #333;
+    }
+
+    body {
+      font-family: 'Helvetica Neue', Arial, 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', sans-serif;
+      background-color: var(--bg-color);
+      color: var(--text-main);
+      margin: 0;
+      line-height: 1.6;
+    }
+
+    /* ヘッダー */
+    header {
+      background: var(--primary-color);
+      color: white;
+      padding: 1.2rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+
+    header h1 { margin: 0; font-size: 1.8rem; letter-spacing: 2px; }
+    header h1 a { color: white; text-decoration: none; }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin-left: 20px;
+      font-weight: bold;
+      transition: color 0.3s;
+    }
+    nav a:hover { color: var(--accent-color); }
+
+    /* メイン */
+    main {
+      max-width: 1000px;
+      margin: 40px auto;
+      padding: 0 20px;
+    }
+
+    .hero {
+      text-align: center;
+      margin-bottom: 50px;
+      background: white;
+      border-left: 8px solid var(--accent-color);
+      padding: 40px;
+      border-radius: 4px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    }
+
+    .hero h2 { margin-top: 0; color: var(--primary-color); }
+
+    /* カードレイアウト */
+    .posts {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 25px;
+    }
+
+    article {
+      background: var(--card-bg);
+      padding: 24px;
+      border-radius: 12px;
+      transition: all 0.3s ease;
+      border-bottom: 4px solid transparent;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+    }
+
+    article:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 12px 20px rgba(0,0,0,0.1);
+      border-bottom: 4px solid var(--accent-color);
+    }
+
+    article h3 {
+      margin-top: 0;
+      font-size: 1.3rem;
+    }
+
+    article h3 a {
+      text-decoration: none;
+      color: var(--primary-color);
+    }
+
+    article p {
+      font-size: 0.95rem;
+      color: #666;
+    }
+
+    footer {
+      text-align: center;
+      padding: 60px 20px;
+      color: #999;
+      font-size: 0.85rem;
+    }
+
+    /* お知らせモーダル（既存機能を統合） */
+    #announcement-modal {
+      display: flex; position: fixed; top: 0; left: 0; width: 100%; height: 100%; 
+      background-color: rgba(0,0,0,0.6); justify-content: center; align-items: center; z-index: 9999;
+      backdrop-filter: blur(5px);
+    }
+    .modal-content {
+      background: white; border-radius: 16px; width: 90%; max-width: 500px; 
+      padding: 40px 30px; position: relative; animation: slideIn 0.4s ease;
+      text-align: center;
+    }
+    @keyframes slideIn { from { opacity: 0; transform: scale(0.9); } to { opacity: 1; transform: scale(1); } }
+  </style>
+</head>
+<body>
+
+  <div id="announcement-modal">
+    <div class="modal-content">
+      <button onclick="document.getElementById('announcement-modal').style.display='none';" style="position: absolute; top: 15px; left: 15px; background: #eee; border: none; font-size: 20px; cursor: pointer; width: 35px; height: 35px; border-radius: 50%;">×</button>
+      <h2 style="color: var(--accent-color);">📢 senninsite ホーム</h2>
+      <p style="text-align: left; font-size: 14px;">
+        仙人開発部門がおくる次世代ポータル「senninsite」がリリースされました。<br><br>
+        これからもよろしく<br>
+        <a href="あ" style="color: var(--accent-color); font-weight: bold;">[NEXT版入口はこちら]</a>
+      </p>
+    </div>
+  </div>
+
+  <header>
+    <h1><a href="/">senninsite</a></h1>
+    <nav>
+      <a href="/">Home</a>
+      <a href="/proxy">Proxy</a>
+      <a href="/games">Games</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <h2>ようこそ、senninsiteへ</h2>
+      <p>さまざまなことができます。</p>
+    </section>
+
+    <section class="posts">
+      <article>
+        <h3><a href="/youtube">YouTube</a></h3>
+        <p>しあtubeや仙人tubeなどを搭載しています。</p>
+      </article>
+      
+      <article>
+        <h3><a href="/proxy">ぷろきし</a></h3>
+        <p>仙人proxyを搭載しています</p>
+      </article>
+      
+      <article>
+        <h3><a href="/game">🎮 ゲーム</a></h3>
+        <p>ゲーム集だよ</p>
+      </article>
+      
+      <article>
+        <h3><a href="/blog">お知らせ</a></h3>
+        <p>運営からのお知らせです　更新情報などを見れます。</p>
+      </article>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2026 senninsit</p>
+  </footer>
+
+</body>
+</html>
