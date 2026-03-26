@@ -1,1 +1,149 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>aをけす　senninsite</title>
+  <style>
+    body {
+      font-family: "Segoe UI", sans-serif;
+      background: #f4f6f8;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
 
+    .container {
+      background: white;
+      padding: 30px;
+      border-radius: 16px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+      width: 90%;
+      max-width: 500px;
+    }
+
+    h2 {
+      margin-top: 0;
+      text-align: center;
+    }
+
+    input {
+      width: 100%;
+      padding: 12px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      margin-top: 10px;
+      font-size: 14px;
+    }
+
+    .buttons {
+      display: flex;
+      gap: 10px;
+      margin-top: 15px;
+    }
+
+    button {
+      flex: 1;
+      padding: 12px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: 0.2s;
+    }
+
+    button:hover {
+      opacity: 0.9;
+    }
+
+    .primary {
+      background: #4CAF50;
+      color: white;
+    }
+
+    .secondary {
+      background: #2196F3;
+      color: white;
+    }
+
+    .danger {
+      background: #f44336;
+      color: white;
+    }
+
+    #result {
+      margin-top: 20px;
+      padding: 10px;
+      background: #f1f1f1;
+      border-radius: 8px;
+      word-break: break-all;
+    }
+
+    .actions {
+      display: flex;
+      gap: 10px;
+      margin-top: 10px;
+    }
+
+    .small {
+      font-size: 12px;
+      padding: 8px;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <h2>URLから「あ」を削除</h2>
+
+  <input type="text" id="urlInput" placeholder="URLを入力">
+
+  <div class="buttons">
+    <button class="primary" onclick="process()">変換</button>
+    <button class="danger" onclick="clearInput()">クリア</button>
+  </div>
+
+  <div id="result">結果がここに表示されます</div>
+
+  <div class="actions">
+    <button class="secondary small" onclick="copyResult()">コピー</button>
+    <button class="secondary small" onclick="openNewTab()">新しいタブで開く</button>
+  </div>
+</div>
+
+<script>
+  let currentResult = "";
+
+  function process() {
+    const input = document.getElementById("urlInput").value;
+    currentResult = input.replace(/あ/g, "");
+    document.getElementById("result").textContent = currentResult || "結果がここに表示されます";
+  }
+
+  function clearInput() {
+    document.getElementById("urlInput").value = "";
+    document.getElementById("result").textContent = "結果がここに表示されます";
+    currentResult = "";
+  }
+
+  function copyResult() {
+    if (!currentResult) {
+      alert("コピーする内容がありません");
+      return;
+    }
+    navigator.clipboard.writeText(currentResult);
+    alert("コピーしました！");
+  }
+
+  function openNewTab() {
+    if (!currentResult) {
+      alert("URLがありません");
+      return;
+    }
+    window.open(currentResult, "_blank");
+  }
+</script>
+
+</body>
+</html>
